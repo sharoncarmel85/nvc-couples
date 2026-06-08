@@ -9,87 +9,189 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Gveret+Levin&display=swap" rel="stylesheet">
     <style>
         :root {
-            --nvc-beige: #F3E9DC;
-            --nvc-green: #A3B18A;
-            --nvc-brown: #D4A373;
+            /* Refined Reference DNA Palette */
+            --brand-primary: #8a9a5b; /* Muted Sage */
+            --brand-secondary: #d4a373; /* Warm Terracotta/Gold */
+            --brand-bg-light: #fdfaf5; /* Warm Ivory */
+            --brand-bg-accent: #f4f1ea; /* Soft Beige */
+            --brand-text: #2d3436;
+            --brand-text-light: #636e72;
+            --section-padding: clamp(80px, 10vw, 120px);
         }
+
         body {
-            font-family: 'Assistant', 'Heebo', sans-serif;
-            background-color: var(--nvc-beige);
-            color: #333;
-            text-align: start;
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--brand-bg-light);
+            color: var(--brand-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
+
+        .font-handwritten {
+            font-family: 'Gveret Levin', cursive;
+        }
+
+        h1, h2, h3, .heading-dna {
+            font-family: 'Assistant', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
         .nvc-gradient {
-            background: linear-gradient(135deg, #F3E9DC 0%, #E9EDC9 100%);
+            background: linear-gradient(135deg, #fdfaf5 0%, #f4f1ea 100%);
         }
+
         .btn-primary {
-            background-color: var(--nvc-brown);
+            background: var(--brand-secondary);
             color: white;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 14px 0 rgba(212, 163, 115, 0.39);
         }
+
         .btn-primary:hover {
-            background-color: #bc8a5f;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 21px 0 rgba(212, 163, 115, 0.45);
+            filter: brightness(1.05);
         }
-        .card {
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(163, 177, 138, 0.3);
+
+        .card-dna {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(138, 154, 91, 0.08);
+            transition: transform 0.3s ease;
         }
-        /* RTL numbers and punctuation fix */
+
+        .card-dna:hover {
+            transform: translateY(-5px);
+        }
+
+        .soft-blob {
+            position: absolute;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+
+        /* RTL & Typography Polish */
         .ltr-text {
             direction: ltr;
             unicode-bidi: isolate;
             display: inline-block;
         }
-        /* Logical spacing */
-        .ms-4 { margin-inline-start: 1rem; }
-        .me-4 { margin-inline-end: 1rem; }
-        .ps-4 { padding-inline-start: 1rem; }
-        .pe-4 { padding-inline-end: 1rem; }
+
+        section {
+            padding-top: var(--section-padding);
+            padding-bottom: var(--section-padding);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            right: 0;
+            background-color: var(--brand-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
     <!-- Header/Nav -->
-    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-[#D4A373]">תקשורת מקרבת</div>
-            <div class="hidden md:flex space-x-reverse space-x-8">
-                <a href="#about" class="hover:text-[#D4A373] transition-colors">מי אני</a>
-                <a href="#curriculum" class="hover:text-[#D4A373] transition-colors">מה לומדים</a>
-                <a href="#details" class="hover:text-[#D4A373] transition-colors">תאריכים ומיקום</a>
-                <a href="#pricing" class="hover:text-[#D4A373] transition-colors">עלות</a>
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-brand-bg-accent/50">
+        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-2xl font-extrabold tracking-tighter text-brand-secondary">תקשורת מקרבת</div>
+            <div class="hidden md:flex space-x-reverse space-x-10">
+                <a href="#about" class="nav-link">מי אני</a>
+                <a href="#curriculum" class="nav-link">מה לומדים</a>
+                <a href="#details" class="nav-link">תאריכים ומיקום</a>
+                <a href="#pricing" class="nav-link">עלות</a>
             </div>
-            <a href="#register" class="btn-primary px-6 py-2 rounded-full font-semibold">להרשמה</a>
+            <a href="#register" class="btn-primary px-8 py-2.5 rounded-full font-bold text-sm tracking-wide">להרשמה</a>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center pt-20 nvc-gradient">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="text-right">
-                <div class="text-[#D4A373] text-xl md:text-2xl font-semibold mb-2">קורס לזוגות</div>
-                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
-                    איך להפוך קונפליקט <span class="text-[#D4A373]">לקרבה?</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-                    4 מפגשי ערב, ימי רביעי, יולי 2026
+    <section class="min-h-screen flex items-center pt-24 relative overflow-hidden">
+        <!-- Background DNA -->
+        <div class="soft-blob w-[500px] h-[500px] bg-brand-primary top-[-10%] left-[-10%]"></div>
+        <div class="soft-blob w-[400px] h-[400px] bg-brand-secondary bottom-[-10%] right-[-10%]"></div>
+        
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="text-right space-y-8 relative z-10">
+                <div class="space-y-2">
+                    <div class="text-brand-primary font-bold tracking-widest text-sm uppercase">קורס לזוגות</div>
+                    <h1 class="text-6xl md:text-7xl font-extrabold leading-[1.1] text-brand-text">
+                        איך להפוך קונפליקט <br>
+                        <span class="font-handwritten text-brand-secondary text-7xl md:text-8xl inline-block mt-2">לקרבה?</span>
+                    </h1>
+                </div>
+                
+                <p class="text-xl md:text-2xl text-brand-text-light font-medium leading-relaxed max-w-xl">
+                    4 מפגשי ערב, ימי שלישי, יולי 2026
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#curriculum" class="btn-primary px-10 py-4 rounded-full text-xl font-bold text-center shadow-lg shadow-[#D4A373]/30">
+                
+                <div class="pt-4">
+                    <a href="#curriculum" class="btn-primary px-12 py-5 rounded-full text-xl font-extrabold inline-block">
                         מה נלמד במפגשים?
                     </a>
                 </div>
             </div>
+            
             <div class="relative">
-                <div class="w-full h-[500px] rounded-3xl bg-[#A3B18A]/20 overflow-hidden shadow-2xl rotate-3 flex items-center justify-center">
-                    <!-- Placeholder for Hero Image -->
-                    <div class="text-[#A3B18A] text-center p-8">
-                        <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                        <p class="text-lg italic">תמונה של זוג ברגע של קרבה ונינוחות בטבע</p>
+                <div class="relative z-10 w-full h-[600px] rounded-[40px] overflow-hidden shadow-2xl transform rotate-2">
+                    <!-- High-quality placeholder image with brand DNA -->
+                    <div class="absolute inset-0 bg-brand-bg-accent flex items-center justify-center p-12 text-center">
+                        <div class="space-y-6">
+                            <svg class="w-20 h-20 mx-auto text-brand-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            <p class="text-brand-text-light font-handwritten text-2xl italic">
+                                "כאן תופיע תמונה הממחישה חיבור, <br> הקשבה וצמיחה זוגית"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative element -->
+                <div class="absolute -bottom-8 -right-8 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Context Section -->
+    <section class="bg-[#f0f2ea] relative overflow-hidden !py-16">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <div class="space-y-8">
+                <div class="space-y-3">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text leading-tight">למה אנחנו רבים שוב את אותו ויכוח?</h2>
+                    <p class="text-2xl md:text-3xl font-handwritten text-brand-secondary">איך לגשת לזה? ומתי?</p>
+                </div>
+                
+                <div class="space-y-8">
+                    <p class="text-xl md:text-2xl text-brand-text font-medium leading-relaxed">
+                        בואו ללמוד כלים שיכולים לסייע לכם להבין אחד את השניה באמת, <br class="hidden md:block">
+                        ולמצוא דרך יחד שבאמת עובדת לשניכם.
+                    </p>
+                    
+                    <div class="bg-white/60 backdrop-blur-sm p-6 md:p-10 rounded-[32px] shadow-sm border border-brand-primary/5">
+                        <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
+                            הקורס מיועד לזוגות שרוצים לדעת איך לריב נכון ולהתפייס באמת, <br class="hidden md:block">
+                            איך לצלוח מצבים מתוחים יום-יומיים שקורים כשרוצים דברים שונים, <br class="hidden md:block">
+                            או כשאחד מבקש משהו שלא בא לשני בטוב.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -97,58 +199,68 @@
     </section>
 
     <!-- Key Benefits -->
-    <section class="py-16 bg-white border-b border-[#A3B18A]/10">
+    <section class="bg-white relative">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#F3E9DC] rounded-xl flex items-center justify-center text-[#D4A373]">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="space-y-6 group">
+                    <div class="w-14 h-14 bg-brand-bg-accent rounded-2xl flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
                     </div>
-                    <p class="text-lg leading-relaxed">לקבל שפה שעוזרת להבין מה קורה לנו בזמן קונפליקט, וליצור התמודדות משותפת</p>
+                    <p class="text-xl leading-relaxed text-brand-text/90 font-medium">לקבל שפה שעוזרת להבין מה קורה לנו בזמן קונפליקט, וליצור <span class="text-brand-primary font-bold">התמודדות משותפת</span></p>
                 </div>
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#F3E9DC] rounded-xl flex items-center justify-center text-[#D4A373]">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                <div class="space-y-6 group">
+                    <div class="w-14 h-14 bg-brand-bg-accent rounded-2xl flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     </div>
-                    <p class="text-lg leading-relaxed">למפות את האזורים המאתגרים של הקשר ולהבין איך ומתי כדאי לגשת אליהם</p>
+                    <p class="text-xl leading-relaxed text-brand-text/90 font-medium">למפות את האזורים המאתגרים של הקשר ולהבין <span class="text-brand-primary font-bold">איך ומתי</span> כדאי לגשת אליהם</p>
                 </div>
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#F3E9DC] rounded-xl flex items-center justify-center text-[#D4A373]">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <div class="space-y-6 group">
+                    <div class="w-14 h-14 bg-brand-bg-accent rounded-2xl flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <p class="text-lg leading-relaxed">ללמוד איך השפה והכלים של התקשורת המקרבת יכולים לסייע להבין אחד/ת את השני/ה</p>
+                    <p class="text-xl leading-relaxed text-brand-text/90 font-medium">ללמוד איך השפה והכלים של התקשורת המקרבת יכולים לסייע <span class="text-brand-primary font-bold">להבין אחד/ת את השני/ה</span></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Social Proof / Context -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12">מה מחכה לכם במפגשים?</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="p-8 rounded-2xl bg-[#F3E9DC]/50">
-                    <div class="w-16 h-16 bg-[#A3B18A] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">1</div>
-                    <h3 class="text-xl font-bold mb-4">כלים פרקטיים</h3>
-                    <p>אנחנו לא רק מדברים. לומדים טכניקות של תקשורת מקרבת שאפשר ליישם כבר באותו הערב.</p>
+    <section class="bg-brand-bg-accent/30 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">מה מחכה לכם במפגשים?</h2>
+                <p class="font-handwritten text-2xl text-brand-secondary">"הזמנה למרחב של הקשבה, למידה וחיבור"</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-dna space-y-6">
+                    <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-full flex items-center justify-center text-2xl font-black">1</div>
+                    <h3 class="text-2xl font-extrabold">כלים פרקטיים</h3>
+                    <p class="text-brand-text-light text-lg">אנחנו לא רק מדברים. לומדים טכניקות של תקשורת מקרבת שאפשר ליישם כבר באותו הערב.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-[#F3E9DC]/50">
-                    <div class="w-16 h-16 bg-[#A3B18A] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">2</div>
-                    <h3 class="text-xl font-bold mb-4">קבוצה אינטימית</h3>
-                    <p>עד <span class="ltr-text">7</span> זוגות בלבד, כדי שיהיה לכל זוג את המקום והמרחב שהוא זקוק לו.</p>
+                
+                <div class="card-dna space-y-6 transform md:translate-y-8">
+                    <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-full flex items-center justify-center text-2xl font-black">2</div>
+                    <h3 class="text-2xl font-extrabold">קבוצה אינטימית</h3>
+                    <p class="text-brand-text-light text-lg">עד <span class="ltr-text font-bold">7</span> זוגות בלבד, כדי שיהיה לכל זוג את המקום והמרחב שהוא זקוק לו.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-[#F3E9DC]/50">
-                    <div class="w-16 h-16 bg-[#A3B18A] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">3</div>
-                    <h3 class="text-xl font-bold mb-4">מעטפת תומכת</h3>
-                    <p class="mb-4">בנוסף למפגשים תקבלו ממני:</p>
-                    <ul class="text-right text-sm space-y-2 inline-block mx-auto">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#A3B18A]">●</span>
-                            <span>4 הצעות לדייטים מקרבים לתרגול הכלים שנלמדו</span>
+                
+                <div class="card-dna space-y-6">
+                    <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-full flex items-center justify-center text-2xl font-black">3</div>
+                    <h3 class="text-2xl font-extrabold">מעטפת תומכת</h3>
+                    <p class="text-brand-text-light text-lg mb-4">בנוסף למפגשים תקבלו ממני:</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="w-5 h-5 bg-brand-secondary/20 text-brand-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            </span>
+                            <span class="text-brand-text font-medium">4 הצעות לדייטים מקרבים לתרגול הכלים</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#A3B18A]">●</span>
-                            <span>מפגש ליווי אישי (שעה וחצי) - לדיוק הדרך הייחודית שלכם</span>
+                        <li class="flex items-start gap-3">
+                            <span class="w-5 h-5 bg-brand-secondary/20 text-brand-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            </span>
+                            <span class="text-brand-text font-medium">מפגש ליווי אישי (שעה וחצי)</span>
                         </li>
                     </ul>
                 </div>
@@ -157,37 +269,44 @@
     </section>
 
     <!-- Curriculum -->
-    <section id="curriculum" class="py-20 bg-[#A3B18A]/10">
+    <section id="curriculum" class="bg-brand-bg-accent/20">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16">מה נלמד ב-4 מפגשים?</h2>
-                <div class="space-y-8">
-                    <div class="card p-8 rounded-2xl shadow-sm flex items-start gap-6">
-                        <span class="text-4xl font-bold text-[#D4A373]">01</span>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">מריבה כקריאה לעזרה</h3>
-                            <p>מה באמת קורה לנו בזמן קונפליקט? איך מתחילים לזוז מהאוטומטים המרחיקים שלנו, ולהסכים מה נרצה לעשות כשיגיעו רגעים מאתגרים (והם יגיעו).</p>
+                <div class="text-center mb-16 space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">תכני המפגשים</h2>
+                    <div class="w-24 h-1 bg-brand-secondary/30 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
+                        <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">01</div>
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-extrabold text-brand-text">מריבה כקריאה לעזרה</h3>
+                            <p class="text-brand-text-light text-lg leading-relaxed">מה באמת קורה לנו בזמן קונפליקט? איך מתחילים לזוז מהאוטומטים המרחיקים שלנו, ולהסכים מה נרצה לעשות כשיגיעו רגעים מאתגרים.</p>
                         </div>
                     </div>
-                    <div class="card p-8 rounded-2xl shadow-sm flex items-start gap-6">
-                        <span class="text-4xl font-bold text-[#D4A373]">02</span>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">לדבר מהלב</h3>
-                            <p>לזהות את הרגשות והצרכים שלנו, לבטא את הכמיהות ואת הכאבים בקרקעית, בלי להאשים ולעורר מגננה.</p>
+                    
+                    <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
+                        <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">02</div>
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-extrabold text-brand-text">לדבר מהלב</h3>
+                            <p class="text-brand-text-light text-lg leading-relaxed">לזהות את הרגשות והצרכים שלנו, לבטא את הכמיהות ואת הכאבים בקרקעית, בלי להאשים ולעורר מגננה.</p>
                         </div>
                     </div>
-                    <div class="card p-8 rounded-2xl shadow-sm flex items-start gap-6">
-                        <span class="text-4xl font-bold text-[#D4A373]">03</span>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">הבנה וחיבור לפני פתרונות</h3>
-                            <p>תהליך שמאפשר לנו לשמוע את השני גם כשזה קשה, ולתת לבן/בת הזוג להרגיש שהם לא לבד בתוך זה.</p>
+                    
+                    <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
+                        <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">03</div>
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-extrabold text-brand-text">הבנה וחיבור לפני פתרונות</h3>
+                            <p class="text-brand-text-light text-lg leading-relaxed">תהליך שמאפשר לנו לשמוע את השני גם כשזה קשה, ולתת לבן/בת הזוג להרגיש שהם לא לבד בתוך זה.</p>
                         </div>
                     </div>
-                    <div class="card p-8 rounded-2xl shadow-sm flex items-start gap-6">
-                        <span class="text-4xl font-bold text-[#D4A373]">04</span>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">ללמוד להתפייס באמת</h3>
-                            <p>איך חוזרים להיות קרובים אחרי ריב, ואיך משמרים את התקשורת האינטימית בשגרת החיים העמוסה.</p>
+                    
+                    <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
+                        <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">04</div>
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-extrabold text-brand-text">ללמוד להתפייס באמת</h3>
+                            <p class="text-brand-text-light text-lg leading-relaxed">איך חוזרים להיות קרובים אחרי ריב, ואיך משמרים את התקשורת האינטימית בשגרת החיים העמוסה.</p>
                         </div>
                     </div>
                 </div>
@@ -196,27 +315,90 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1 flex justify-center">
-                <div class="w-48 h-48 md:w-64 md:h-64 bg-[#D4A373]/20 rounded-full overflow-hidden shadow-xl border-4 border-white">
-                     <img src="sharon.webp" alt="שרון כרמל" class="w-full h-full object-cover">
+    <section id="about" class="bg-white relative overflow-hidden">
+        <div class="soft-blob w-[300px] h-[300px] bg-brand-secondary/30 top-[20%] right-[-10%]"></div>
+        
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="order-2 md:order-1 flex justify-center relative">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div class="absolute inset-0 bg-brand-secondary/10 rounded-full transform -rotate-6"></div>
+                    <div class="relative w-full h-full rounded-full overflow-hidden shadow-2xl border-4 border-white">
+                         <img src="sharon.png" alt="שרון כרמל" class="w-full h-full object-cover">
+                    </div>
                 </div>
             </div>
-            <div class="order-1 md:order-2">
-                <h2 class="text-4xl font-bold mb-8 text-[#D4A373]">מי אני?</h2>
-                <div class="space-y-6 text-lg leading-relaxed">
-                    <p class="font-bold text-2xl">אני שרון כרמל</p>
+            
+            <div class="order-1 md:order-2 space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text">נעים להכיר, אני שרון כרמל</h2>
+                
+                <div class="space-y-6 text-lg text-brand-text-light leading-relaxed pt-2">
                     <p>מנחת קבוצות, תלמידה של יחסים ושיתוף פעולה.</p>
-                    <p>בעשור האחרון אני מלווה זוגות, מלמדת תקשורת מקרבת, מגשרת ומייעצת.</p>
-                    <p>באמצעות ההנחיה שלי אני יוצרת מפגשים שמנגישים את הדרכים להתחבר, להתמודד עם אתגרים, ולחזק את ההבנה ההדדית והיחד.</p>
+                    <p>בעשור האחרון אני מלווה זוגות, מלמדת תקשורת מקרבת, מגשרת ומייעצת. באמצעות ההנחיה שלי אני יוצרת מפגשים שמנגישים את הדרכים להתחבר, להתמודד עם אתגרים, ולחזק את ההבנה ההדדית והיחד.</p>
                     <p>אני מאמינה שזוגיות היא המגרש הכי חי והכי מרגש להתפתחות, ושבקונפליקט מסתתרים מטמונים הכרחיים לחיים ולהעמקת הקשר.</p>
-                    <p>מלווה אנשים בקונפליקט או אתגר (זוגות, משפחות, צוותי עבודה) בקליניקה בפרדס חנה ואון-ליין.</p>
+                    <p class="whatsapp-trigger transition-colors duration-500">
+                        מקבלת בקליניקה בפרדס חנה ואון-ליין
+                        <a href="https://wa.me/972546738619" target="_blank" class="inline-flex items-center gap-1.5 hover:text-[#25D366] transition-colors align-middle" onclick="this.closest('.whatsapp-trigger').style.color='#25D366'">
+                            <svg class="w-5 h-5 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Details -->
+    <section id="details" class="nvc-gradient relative overflow-hidden">
+        <div class="soft-blob w-[400px] h-[400px] bg-brand-primary top-[-10%] right-[-10%]"></div>
+        
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">פרטים והרשמה</h2>
+                <p class="font-handwritten text-2xl text-brand-secondary italic">"הצעד הראשון לשינוי מתחיל כאן"</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-stretch">
+                <div class="card-dna bg-white/50 backdrop-blur-sm border-2 border-brand-primary/20 flex flex-col justify-center">
+                    <h3 class="text-2xl font-extrabold mb-10 text-brand-primary uppercase tracking-widest">מתי ואיפה?</h3>
+                    <ul class="space-y-8 text-right inline-block mx-auto">
+                        <li class="flex items-center gap-5">
+                            <span class="w-10 h-10 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </span>
+                            <span class="text-xl font-medium">ימי שלישי, <span class="ltr-text font-bold">18:00-21:30</span></span>
+                        </li>
+                        <li class="flex items-center gap-5">
+                            <span class="w-10 h-10 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </span>
+                            <span class="text-xl font-medium ltr-text font-bold">7.7, 14.7, 21.7, 27.7</span>
+                        </li>
+                        <li class="flex items-center gap-5">
+                            <span class="w-10 h-10 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </span>
+                            <span class="text-xl font-medium">סטודיו חוץ, כרכור</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="pricing" class="card-dna bg-white ring-4 ring-brand-secondary/10 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-extrabold text-brand-text">מחיר השקה מיוחד</h3>
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-4xl font-light text-brand-secondary self-start mt-2">₪</span>
+                            <span class="text-7xl font-black text-brand-secondary tracking-tighter ltr-text">1,200</span>
+                        </div>
+                        <p class="text-brand-text-light font-handwritten text-xl italic opacity-80">מחיר לזוג עבור כל 4 המפגשים</p>
+                    </div>
                     
-                    <div class="pt-6">
-                        <a href="https://wa.me/972546738619" target="_blank" class="inline-flex items-center gap-3 bg-[#25D366] text-white px-6 py-3 rounded-full font-bold hover:bg-[#128C7E] transition-all shadow-lg">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            דברו איתי בוואטסאפ
+                    <div class="mt-10 space-y-8">
+                        <p class="text-brand-text font-bold text-lg leading-relaxed bg-brand-bg-accent py-4 px-6 rounded-2xl">
+                            למה כדאי להירשם עכשיו? <br>
+                            <span class="text-brand-primary">בגלל האינטימיות - המקומות נתפסים מהר.</span>
+                        </p>
+                        <a href="#register" class="btn-primary block w-full py-5 rounded-full text-2xl font-black shadow-2xl">
+                            תשריינו לנו מקום
                         </a>
                     </div>
                 </div>
@@ -224,69 +406,56 @@
         </div>
     </section>
 
-    <!-- Pricing & Details -->
-    <section id="details" class="py-20 nvc-gradient">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-16">פרטים והרשמה</h2>
-            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div class="card p-12 rounded-3xl shadow-lg border-2 border-[#D4A373]">
-                    <h3 class="text-2xl font-bold mb-8">מתי ואיפה?</h3>
-                    <ul class="space-y-6 text-right inline-block mx-auto">
-                        <li class="flex items-center gap-4">
-                            <span class="w-8 h-8 bg-[#A3B18A] rounded-full flex items-center justify-center text-white">✓</span>
-                            <span>ימי שלישי, <span class="ltr-text">19:30-21:30</span></span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <span class="w-8 h-8 bg-[#A3B18A] rounded-full flex items-center justify-center text-white">✓</span>
-                            <span>4 מפגשים רצופים</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <span class="w-8 h-8 bg-[#A3B18A] rounded-full flex items-center justify-center text-white">✓</span>
-                            <span>סטודיו חוץ, כרכור</span>
-                        </li>
-                    </ul>
-                </div>
-                <div id="pricing" class="card p-12 rounded-3xl shadow-lg bg-white">
-                    <h3 class="text-2xl font-bold mb-2">מחיר השקה מיוחד</h3>
-                    <p class="text-[#D4A373] text-5xl font-bold mb-6">₪<span class="ltr-text">1,200</span></p>
-                    <p class="mb-8 opacity-70 italic">מחיר לזוג עבור כל 4 המפגשים</p>
-                    <p class="mb-8 font-semibold">למה כדאי להירשם עכשיו? <br> בגלל האינטימיות - המקומות נתפסים מהר.</p>
-                    <a href="#register" class="btn-primary block w-full py-4 rounded-full text-xl font-bold">
-                        תשריינו לנו מקום
-                    </a>
-                </div>
+    <!-- Registration Form -->
+    <section id="register" class="bg-white">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="card-dna border-none shadow-2xl p-10 md:p-16 text-center space-y-10 relative overflow-hidden">
+                 <div class="soft-blob w-full h-full bg-brand-secondary top-0 left-0 opacity-[0.03]"></div>
+                 
+                 <div class="space-y-4 relative z-10">
+                    <h2 class="text-4xl font-extrabold text-brand-text">רוצים לשמוע עוד?</h2>
+                    <p class="text-xl text-brand-text-light font-medium">השאירו פרטים ואחזור אליכם בהקדם</p>
+                 </div>
+                 
+                 <form class="space-y-5 relative z-10">
+                    <input type="text" placeholder="שמות שניכם" class="w-full px-8 py-5 rounded-2xl border-2 border-brand-bg-accent bg-brand-bg-light/50 focus:border-brand-secondary focus:ring-0 transition-all outline-none text-lg font-medium placeholder:text-brand-text-light/50">
+                    <input type="email" placeholder="אימייל" class="w-full px-8 py-5 rounded-2xl border-2 border-brand-bg-accent bg-brand-bg-light/50 focus:border-brand-secondary focus:ring-0 transition-all outline-none text-lg font-medium placeholder:text-brand-text-light/50">
+                    <input type="tel" placeholder="טלפון" class="w-full px-8 py-5 rounded-2xl border-2 border-brand-bg-accent bg-brand-bg-light/50 focus:border-brand-secondary focus:ring-0 transition-all outline-none text-lg font-medium placeholder:text-brand-text-light/50">
+                    <button type="button" class="btn-primary w-full py-5 rounded-2xl text-2xl font-black mt-4 tracking-tight">
+                        שלחו לי פרטים על המפגש הקרוב
+                    </button>
+                 </form>
+                 
+                 <div class="pt-6 relative z-10">
+                    <p class="text-brand-text-light text-lg">
+                        או פשוט דברו איתי בוואטסאפ: <br>
+                        <a href="https://wa.me/972546738619" target="_blank" class="text-brand-secondary font-black text-2xl hover:underline ltr-text">054-6738619</a>
+                    </p>
+                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-[#333] text-white/70">
-        <div class="container mx-auto px-6 text-center">
-            <div class="text-2xl font-bold text-[#D4A373] mb-6">תקשורת מקרבת בכרכור</div>
-            <p class="mb-6">כל הזכויות שמורות © <span class="ltr-text">2024</span></p>
-            <div class="flex justify-center space-x-reverse space-x-6">
-                <a href="#" class="hover:text-white transition-colors">וואטסאפ</a>
-                <a href="#" class="hover:text-white transition-colors">פייסבוק</a>
-                <a href="#" class="hover:text-white transition-colors">אינסטגרם</a>
+    <footer class="py-20 bg-brand-text text-white/50">
+        <div class="container mx-auto px-6 text-center space-y-12">
+            <div class="space-y-4">
+                <div class="text-3xl font-black tracking-tighter text-brand-secondary">תקשורת מקרבת בכרכור</div>
+                <p class="text-lg font-handwritten italic">"חיבור שמתחיל בלב, ומתבטא במילים"</p>
+            </div>
+            
+            <div class="w-full h-px bg-white/10 max-w-xl mx-auto"></div>
+            
+            <div class="space-y-6">
+                <p class="text-sm font-medium tracking-widest uppercase">כל הזכויות שמורות © <span class="ltr-text">2024</span> שרון כרמל</p>
+                <div class="flex justify-center space-x-reverse space-x-10 text-lg font-bold">
+                    <a href="https://wa.me/972546738619" class="hover:text-brand-secondary transition-colors">וואטסאפ</a>
+                    <a href="#" class="hover:text-brand-secondary transition-colors">פייסבוק</a>
+                    <a href="#" class="hover:text-brand-secondary transition-colors">אינסטגרם</a>
+                </div>
             </div>
         </div>
     </footer>
-
-    <!-- Form Section (Placeholder for registration) -->
-    <section id="register" class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-2xl text-center">
-             <h2 class="text-3xl font-bold mb-8">רוצים לשמוע עוד? השאירו פרטים</h2>
-             <form class="space-y-4">
-                <input type="text" placeholder="שמות שניכם" class="w-full px-6 py-4 rounded-xl border border-[#A3B18A]/30 focus:outline-none focus:ring-2 focus:ring-[#D4A373]">
-                <input type="email" placeholder="אימייל" class="w-full px-6 py-4 rounded-xl border border-[#A3B18A]/30 focus:outline-none focus:ring-2 focus:ring-[#D4A373]">
-                <input type="tel" placeholder="טלפון" class="w-full px-6 py-4 rounded-xl border border-[#A3B18A]/30 focus:outline-none focus:ring-2 focus:ring-[#D4A373]">
-                <button type="button" class="btn-primary w-full py-4 rounded-xl text-xl font-bold mt-4 shadow-lg shadow-[#D4A373]/30">
-                    שלחו לי פרטים על המפגש הקרוב
-                </button>
-             </form>
-             <p class="mt-8 text-sm opacity-60">או פשוט דברו איתי בוואטסאפ: <span class="ltr-text">054-6738619</span></p>
-        </div>
-    </section>
 
     <script>
         // Smooth scroll
