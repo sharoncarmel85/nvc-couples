@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="איך לריב נכון ולהתפייס באמת? - 4 מפגשים זוגיים בסטודיו חוץ אינטימי בכרכור. למידה של תקשורת מקרבת (NVC) באווירה רגועה ומחברת.">
+    <meta name="description" content="איך לריב נכון ולהתפייס באמת? - 4 מפגשים זוגיים בסטודיו בכרכור. למידה של תקשורת מקרבת (NVC) באווירה רגועה ומחברת.">
     <meta name="keywords" content="תקשורת מקרבת, זוגיות, מפגשי זוגות, כרכור, איך לריב נכון, התפייסות, NVC">
     <title>איך לריב נכון ולהתפייס באמת? | מפגשי זוגות בכרכור</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#8a9a5b',
+                        'brand-secondary': '#d4a373',
+                        'brand-bg-light': '#fdfaf5',
+                        'brand-bg-accent': '#f4f1ea',
+                        'brand-text': '#2d3436',
+                        'brand-text-light': '#636e72',
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Gveret+Levin&display=swap" rel="stylesheet">
@@ -19,6 +35,10 @@
             --brand-bg-accent: #f4f1ea; /* Soft Beige */
             --brand-text: #2d3436;
             --brand-text-light: #636e72;
+            --brand-peach: #E8B4A8; /* Pink-cream heading line */
+            --brand-teal-dark: #2C4A4C; /* Dark quote background */
+            --brand-teal: #3D5A5C;
+            --logo-bg: #F7F8F2; /* Matches the logo's paper background */
             --section-padding: clamp(80px, 10vw, 120px);
         }
 
@@ -110,7 +130,19 @@
             width: 100%;
         }
 
-        /* Hero Background and Overlay */
+        /* Heading divider line (pink-cream / peach) */
+        .heading-line {
+            width: 60px;
+            height: 3px;
+            background: var(--brand-peach);
+            border-radius: 2px;
+            margin: 16px auto 0;
+        }
+        .heading-line--start {
+            margin: 16px 0 0 auto; /* right-aligned under RTL right-aligned heading */
+        }
+
+        /* Hero Background and Reddish Overlay */
         .hero-section {
             background-image: url('hero-bg.jpg');
             background-size: cover;
@@ -121,8 +153,12 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background-color: rgba(253, 250, 245, 0.5); /* 50% transparency */
-            backdrop-filter: blur(3px); /* Subtle blur */
+            /* Warm, reddish semi-transparent filter (reference DNA) */
+            background: linear-gradient(135deg,
+                rgba(245, 230, 211, 0.80) 0%,
+                rgba(232, 180, 168, 0.78) 45%,
+                rgba(206, 128, 110, 0.70) 100%);
+            backdrop-filter: blur(2px);
             z-index: 1;
         }
 
@@ -130,14 +166,73 @@
             position: relative;
             z-index: 10;
         }
+        .hero-content h1,
+        .hero-content p,
+        .hero-content .hero-eyebrow {
+            text-shadow: 0 1px 4px rgba(253, 250, 245, 0.6);
+        }
+
+        /* Dark Quote Section */
+        .section--quote {
+            background:
+                linear-gradient(135deg, rgba(44, 74, 76, 0.86) 0%, rgba(61, 90, 92, 0.82) 100%),
+                url('99-NZ6_2151.jpg') center 35% / cover no-repeat;
+        }
+
+        /* Registration section with photo behind */
+        .register-section {
+            background:
+                linear-gradient(135deg, rgba(253, 250, 245, 0.86) 0%, rgba(244, 241, 234, 0.82) 100%),
+                url('workshop-couches.jpg') center 40% / cover no-repeat;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            will-change: opacity, transform;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+        .stagger > * {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .stagger.is-visible > * {
+            opacity: 1;
+            transform: none;
+        }
+        .stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+        .stagger.is-visible > *:nth-child(2) { transition-delay: 0.18s; }
+        .stagger.is-visible > *:nth-child(3) { transition-delay: 0.31s; }
+        .stagger.is-visible > *:nth-child(4) { transition-delay: 0.44s; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .stagger > * { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* Delicate ink botanical decoration */
+        .botanical {
+            display: flex;
+            justify-content: center;
+            padding: 8px 0;
+            opacity: 0.45;
+        }
+        .botanical svg {
+            width: 180px;
+            height: auto;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
-    <!-- Header/Nav -->
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-brand-bg-accent/50">
-        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+    <!-- Header/Nav (compact height, matches logo background) -->
+    <header class="fixed w-full z-50 backdrop-blur-md border-b border-black/5" style="background-color: var(--logo-bg);">
+        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="#" class="flex items-center">
-                <img src="logo.jpeg" alt="שרון כרמל - תקשורת מקרבת" class="h-16 md:h-20 w-auto mix-blend-multiply">
+                <img src="logo-transparent.png" alt="שרון כרמל - תקשורת מקרבת" class="h-11 md:h-14 w-auto">
             </a>
             <div class="hidden md:flex space-x-reverse space-x-10">
                 <a href="#about" class="nav-link">מי אני</a>
@@ -149,85 +244,88 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (centered, no side image, reddish overlay) -->
     <section class="hero-section min-h-screen flex items-center pt-24 relative overflow-hidden">
-        <!-- Background Overlay -->
+        <!-- Reddish Overlay -->
         <div class="hero-overlay"></div>
-        
+
         <!-- Background DNA -->
         <div class="soft-blob w-[500px] h-[500px] bg-brand-primary top-[-10%] left-[-10%]"></div>
         <div class="soft-blob w-[400px] h-[400px] bg-brand-secondary bottom-[-10%] right-[-10%]"></div>
-        
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center hero-content">
-            <div class="text-right space-y-8 relative z-10">
-                <div class="space-y-2">
-                    <div class="text-brand-primary font-bold tracking-widest text-sm uppercase">קורס לזוגות</div>
-                    <h1 class="text-6xl md:text-7xl font-extrabold leading-[1.1] text-brand-text">
-                        איך להפוך קונפליקט <br>
-                        <span class="font-handwritten text-brand-secondary text-7xl md:text-8xl inline-block mt-2">לקרבה?</span>
-                    </h1>
-                </div>
-                
-                <p class="text-xl md:text-2xl text-brand-text-light font-medium leading-relaxed max-w-xl">
+
+        <div class="container mx-auto px-6 hero-content text-center">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] text-brand-text reveal">
+                    איך להפוך קונפליקט <br>
+                    <span class="font-handwritten text-6xl md:text-8xl inline-block mt-2" style="color:#c0894e;">לקרבה?</span>
+                </h1>
+
+                <div class="hero-eyebrow text-brand-primary font-bold tracking-[0.3em] text-base md:text-lg uppercase reveal">קורס לזוגות</div>
+
+                <p class="text-xl md:text-2xl text-brand-text font-medium leading-relaxed max-w-xl mx-auto reveal">
                     4 מפגשי ערב, ימי שלישי, יולי 2026
                 </p>
-                
-                <div class="pt-4">
+
+                <div class="pt-4 reveal">
                     <a href="#curriculum" class="btn-primary px-12 py-5 rounded-full text-xl font-extrabold inline-block">
                         מה נלמד במפגשים?
                     </a>
                 </div>
             </div>
-            
-            <div class="relative">
-                <div class="relative z-10 w-full h-[600px] rounded-[40px] overflow-hidden shadow-2xl transform rotate-2">
-                    <!-- High-quality placeholder image with brand DNA -->
-                    <div class="absolute inset-0 bg-brand-bg-accent flex items-center justify-center p-12 text-center">
-                        <div class="space-y-6">
-                            <svg class="w-20 h-20 mx-auto text-brand-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                            <p class="text-brand-text-light font-handwritten text-2xl italic">
-                                "כאן תופיע תמונה הממחישה חיבור, <br> הקשבה וצמיחה זוגית"
-                            </p>
-                        </div>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Context Section (new research intro text) -->
+    <section class="bg-[#f0f2ea] relative overflow-hidden !py-20">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <div class="space-y-8 reveal">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text leading-tight">מה המאפיין המרכזי של זוגות שנשארים יחד לאורך זמן?</h2>
+                    <div class="heading-line"></div>
                 </div>
-                <!-- Decorative element -->
-                <div class="absolute -bottom-8 -right-8 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl -z-10"></div>
+
+                <div class="space-y-6">
+                    <p class="text-xl md:text-2xl text-brand-text font-medium leading-relaxed">
+                        מחקר רחב היקף שעשו <span class="ltr-text">XI Y</span>, במטרה לגלות איך הם עושים את זה, גילה שהם יודעים לריב נכון!
+                    </p>
+                    <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
+                        כל הזוגות מתווכחים. קונפליקטים הם חלק טבעי מהחיים של כולנו.
+                    </p>
+                    <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
+                        אבל איך לריב נכון? ואיך להתפייס באמת? רובנו לא ראינו זוגיות כזו, ולא לימדו אותנו מה לעשות כשנפגענו.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- New Context Section -->
-    <section class="bg-[#f0f2ea] relative overflow-hidden !py-16">
-        <div class="container mx-auto px-6 text-center max-w-4xl">
-            <div class="space-y-8">
-                <div class="space-y-3">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text leading-tight">למה אנחנו רבים שוב את אותו ויכוח?</h2>
-                    <p class="text-2xl md:text-3xl font-handwritten text-brand-secondary">איך לגשת לזה? ומתי?</p>
-                </div>
-                
-                <div class="space-y-8">
-                    <p class="text-xl md:text-2xl text-brand-text font-medium leading-relaxed">
-                        בואו ללמוד כלים שיכולים לסייע לכם להבין אחד את השניה באמת, <br class="hidden md:block">
-                        ולמצוא דרך יחד שבאמת עובדת לשניכם.
-                    </p>
-                    
-                    <div class="bg-white/60 backdrop-blur-sm p-6 md:p-10 rounded-[32px] shadow-sm border border-brand-primary/5">
-                        <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
-                            הקורס מיועד לזוגות שרוצים לדעת איך לריב נכון ולהתפייס באמת, <br class="hidden md:block">
-                            איך לצלוח מצבים מתוחים יום-יומיים שקורים כשרוצים דברים שונים, <br class="hidden md:block">
-                            או כשאחד מבקש משהו שלא בא לשני בטוב.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <!-- Dark Quote Section -->
+    <section class="section--quote relative overflow-hidden !py-24">
+        <div class="container mx-auto px-6 text-center max-w-3xl relative z-10 reveal">
+            <p class="text-3xl md:text-5xl font-extrabold text-white leading-relaxed">
+                קונפליקט = שני אנשים שזקוקים להקשבה,
+                <br class="hidden md:block">
+                ואף אחד לא פנוי להקשיב…
+            </p>
         </div>
     </section>
+
+    <!-- Botanical decoration -->
+    <div class="botanical reveal" aria-hidden="true">
+        <svg viewBox="0 0 220 70" fill="none" stroke="#2d3436" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 60 C 60 56, 110 44, 150 26 S 200 8 212 7"/>
+            <path d="M70 50 q -14 -13 2 -26 q 15 9 -2 26"/>
+            <path d="M105 41 q 14 -15 -3 -27 q -16 11 3 27"/>
+            <path d="M140 30 q -13 -14 3 -25 q 14 9 -3 25"/>
+            <circle cx="212" cy="7" r="2.2"/>
+            <path d="M212 7 q 7 -5 11 1 M212 7 q 6 6 -1 11 M212 7 q -7 -4 -10 3"/>
+        </svg>
+    </div>
 
     <!-- Key Benefits -->
     <section class="bg-white relative">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12">
+            <div class="grid md:grid-cols-3 gap-12 stagger">
                 <div class="space-y-6 group">
                     <div class="w-14 h-14 bg-brand-bg-accent rounded-2xl flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
@@ -254,12 +352,12 @@
     <section id="curriculum" class="bg-brand-bg-accent/20">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16 space-y-4">
+                <div class="text-center mb-16 reveal">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">תכני המפגשים</h2>
-                    <div class="w-24 h-1 bg-brand-secondary/30 mx-auto rounded-full"></div>
+                    <div class="heading-line"></div>
                 </div>
-                
-                <div class="space-y-6">
+
+                <div class="space-y-6 stagger">
                     <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
                         <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">01</div>
                         <div class="space-y-3">
@@ -267,7 +365,7 @@
                             <p class="text-brand-text-light text-lg leading-relaxed">מה באמת קורה לנו בזמן קונפליקט? איך מתחילים לזוז מהאוטומטים המרחיקים שלנו, ולהסכים מה נרצה לעשות כשיגיעו רגעים מאתגרים.</p>
                         </div>
                     </div>
-                    
+
                     <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
                         <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">02</div>
                         <div class="space-y-3">
@@ -275,7 +373,7 @@
                             <p class="text-brand-text-light text-lg leading-relaxed">לזהות את הרגשות והצרכים שלנו, לבטא את הכמיהות ואת הכאבים בקרקעית, בלי להאשים ולעורר מגננה.</p>
                         </div>
                     </div>
-                    
+
                     <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
                         <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">03</div>
                         <div class="space-y-3">
@@ -283,7 +381,7 @@
                             <p class="text-brand-text-light text-lg leading-relaxed">תהליך שמאפשר לנו לשמוע את השני גם כשזה קשה, ולתת לבן/בת הזוג להרגיש שהם לא לבד בתוך זה.</p>
                         </div>
                     </div>
-                    
+
                     <div class="card-dna flex flex-col md:flex-row items-start gap-8 group">
                         <div class="text-4xl md:text-5xl font-black text-brand-primary/10 group-hover:text-brand-primary/30 transition-colors duration-500 font-handwritten">04</div>
                         <div class="space-y-3">
@@ -296,26 +394,39 @@
         </div>
     </section>
 
-    <!-- Social Proof / Context -->
+    <!-- Botanical decoration -->
+    <div class="botanical reveal" aria-hidden="true">
+        <svg viewBox="0 0 220 70" fill="none" stroke="#2d3436" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M212 60 C 160 56, 110 44, 70 26 S 20 8 8 7"/>
+            <path d="M150 50 q 14 -13 -2 -26 q -15 9 2 26"/>
+            <path d="M115 41 q -14 -15 3 -27 q 16 11 -3 27"/>
+            <path d="M80 30 q 13 -14 -3 -25 q -14 9 3 25"/>
+            <circle cx="8" cy="7" r="2.2"/>
+            <path d="M8 7 q -7 -5 -11 1 M8 7 q -6 6 1 11 M8 7 q 7 -4 10 3"/>
+        </svg>
+    </div>
+
+    <!-- What's Included -->
     <section class="bg-brand-bg-accent/30 relative">
         <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">מה הקורס כולל?</h2>
+                <div class="heading-line"></div>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch stagger">
                 <div class="card-dna space-y-6">
                     <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-full flex items-center justify-center text-2xl font-black">1</div>
                     <h3 class="text-2xl font-extrabold">כלים פרקטיים</h3>
                     <p class="text-brand-text-light text-lg">אנחנו לא רק מדברים. לומדים טכניקות של תקשורת מקרבת שאפשר ליישם כבר באותו הערב.</p>
                 </div>
-                
-                <div class="card-dna space-y-6 transform md:translate-y-8">
+
+                <div class="card-dna space-y-6">
                     <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-full flex items-center justify-center text-2xl font-black">2</div>
                     <h3 class="text-2xl font-extrabold">קבוצה אינטימית</h3>
-                    <p class="text-brand-text-light text-lg">עד <span class="ltr-text font-bold">7</span> זוגות בלבד, כדי שיהיה לכל זוג את המקום והמרחב שהוא זקוק לו.</p>
+                    <p class="text-brand-text-light text-lg">עד <span class="ltr-text font-bold">7</span> זוגות בלבד, כדי שיהיה לכל זוג את המקום והמרחב.</p>
                 </div>
-                
+
                 <div class="card-dna space-y-6">
                     <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-full flex items-center justify-center text-2xl font-black">3</div>
                     <h3 class="text-2xl font-extrabold">מעטפת תומכת</h3>
@@ -339,12 +450,45 @@
         </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="bg-white relative overflow-hidden">
+        <div class="soft-blob w-[300px] h-[300px] bg-brand-primary/30 bottom-[10%] left-[-10%]"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">מה אומרים המשתתפים</h2>
+                <div class="heading-line"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
+                <div class="reveal">
+                    <div class="rounded-[32px] overflow-hidden shadow-2xl">
+                        <img src="facilitation.jpg" alt="שרון כרמל מנחה מפגש זוגות" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="space-y-8 stagger">
+                    <div class="card-dna">
+                        <svg class="w-10 h-10 text-brand-secondary/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"></path></svg>
+                        <p class="text-lg text-brand-text leading-relaxed">ההנחיה של שרון היתה מעולה. היא הייתה מאד חדה, ידעה להרגיש את המשתתפים ולחוש מה עומד מאחורי המילים המדוברות. המפגש בקבוצה היה כיף גדול. התרגולים של הכלים בתקשורת מקרבת היו מאד מהנים ומעניינים ועשו חשק לחקור עוד ועוד.</p>
+                        <p class="mt-5 font-extrabold text-brand-primary">איתי</p>
+                    </div>
+
+                    <div class="card-dna">
+                        <svg class="w-10 h-10 text-brand-secondary/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"></path></svg>
+                        <p class="text-lg text-brand-text leading-relaxed">הקורס השפיע על צורת ההתבוננות שלי על קונפליקטים ועל שיחות קשות. בעיקר יצאתי בתחושה שזו שפה נפלאה, ושהייתי רוצה להפיץ את הבשורה לאנשים סביבי כדי שגם הם יבינו את המקור לשיח שכולנו מורגלים בו ויבינו שאפשר גם אחרת.</p>
+                        <p class="mt-5 font-extrabold text-brand-primary">לימור</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
-    <section id="about" class="bg-white relative overflow-hidden">
+    <section id="about" class="bg-brand-bg-accent/20 relative overflow-hidden">
         <div class="soft-blob w-[300px] h-[300px] bg-brand-secondary/30 top-[20%] right-[-10%]"></div>
-        
+
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div class="order-2 md:order-1 flex justify-center relative">
+            <div class="order-2 md:order-1 flex justify-center relative reveal">
                 <div class="relative w-64 h-64 md:w-80 md:h-80">
                     <div class="absolute inset-0 bg-brand-secondary/10 rounded-full transform -rotate-6"></div>
                     <div class="relative w-full h-full rounded-full overflow-hidden shadow-2xl border-4 border-white">
@@ -352,11 +496,12 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="order-1 md:order-2 space-y-4">
-                <img src="logo.jpeg" alt="לוגו שרון כרמל" class="h-16 md:h-20 w-auto opacity-80 mb-2 mix-blend-multiply">
+
+            <div class="order-1 md:order-2 space-y-4 reveal">
+                <img src="logo-transparent.png" alt="לוגו שרון כרמל" class="h-16 md:h-20 w-auto opacity-90 mb-2">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text">נעים להכיר, אני שרון כרמל</h2>
-                
+                <div class="heading-line heading-line--start"></div>
+
                 <div class="space-y-6 text-lg text-brand-text-light leading-relaxed pt-2">
                     <p>מנחת קבוצות, תלמידה של יחסים ושיתוף פעולה.</p>
                     <p>בעשור האחרון אני מלווה זוגות, מלמדת תקשורת מקרבת, מגשרת ומייעצת. באמצעות ההנחיה שלי אני יוצרת מפגשים שמנגישים את הדרכים להתחבר, להתמודד עם אתגרים, ולחזק את ההבנה ההדדית והיחד.</p>
@@ -369,20 +514,20 @@
                     </p>
                 </div>
             </div>
-            </div>
         </div>
     </section>
 
     <!-- Pricing & Details -->
     <section id="details" class="nvc-gradient relative overflow-hidden">
         <div class="soft-blob w-[400px] h-[400px] bg-brand-primary top-[-10%] right-[-10%]"></div>
-        
+
         <div class="container mx-auto px-6 text-center">
-            <div class="max-w-3xl mx-auto mb-16 space-y-4">
+            <div class="max-w-3xl mx-auto mb-16 reveal">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">פרטים והרשמה</h2>
+                <div class="heading-line"></div>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-stretch">
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-stretch stagger">
                 <div class="card-dna bg-white/50 backdrop-blur-sm border-2 border-brand-primary/20 flex flex-col justify-center">
                     <h3 class="text-2xl font-extrabold mb-10 text-brand-primary uppercase tracking-widest">מתי ואיפה?</h3>
                     <ul class="space-y-8 text-right inline-block mx-auto">
@@ -402,11 +547,11 @@
                             <span class="w-10 h-10 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-lg">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             </span>
-                            <span class="text-xl font-medium">סטודיו חוץ, כרכור</span>
+                            <span class="text-xl font-medium">בסטודיו בכרכור</span>
                         </li>
                     </ul>
                 </div>
-                
+
                 <div id="pricing" class="card-dna bg-white ring-4 ring-brand-secondary/10 flex flex-col justify-between">
                     <div class="space-y-6">
                         <h3 class="text-2xl font-extrabold text-brand-text">עלות הקורס והליווי</h3>
@@ -416,7 +561,7 @@
                         </div>
                         <p class="text-brand-text font-bold text-xl text-brand-secondary">מחיר השקה מיוחד לזוג</p>
                     </div>
-                    
+
                     <div class="mt-10 space-y-8">
                         <a href="#register" class="btn-primary block w-full py-5 rounded-full text-2xl font-black shadow-2xl">
                             תשריינו לנו מקום
@@ -427,48 +572,57 @@
         </div>
     </section>
 
-    <!-- Registration Form -->
-    <section id="register" class="bg-white">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <div class="card-dna border-none shadow-2xl p-10 md:p-16 text-center space-y-10 relative overflow-hidden">
-                 <div class="soft-blob w-full h-full bg-brand-secondary top-0 left-0 opacity-[0.03]"></div>
-                 
-                 <div class="space-y-4 relative z-10">
-                    <h2 class="text-4xl font-extrabold text-brand-text">רוצים לשמוע עוד?</h2>
-                    <p class="text-xl text-brand-text-light font-medium">השאירו פרטים ואחזור אליכם בהקדם</p>
-                 </div>
-                 
-                 <form class="space-y-5 relative z-10">
-                    <input type="text" placeholder="שמות שניכם" class="w-full px-8 py-5 rounded-2xl border-2 border-brand-bg-accent bg-brand-bg-light/50 focus:border-brand-secondary focus:ring-0 transition-all outline-none text-lg font-medium placeholder:text-brand-text-light/50">
-                    <input type="email" placeholder="אימייל" class="w-full px-8 py-5 rounded-2xl border-2 border-brand-bg-accent bg-brand-bg-light/50 focus:border-brand-secondary focus:ring-0 transition-all outline-none text-lg font-medium placeholder:text-brand-text-light/50">
-                    <input type="tel" placeholder="טלפון" class="w-full px-8 py-5 rounded-2xl border-2 border-brand-bg-accent bg-brand-bg-light/50 focus:border-brand-secondary focus:ring-0 transition-all outline-none text-lg font-medium placeholder:text-brand-text-light/50">
-                    <button type="button" class="btn-primary w-full py-5 rounded-2xl text-2xl font-black mt-4 tracking-tight">
-                        שלחו לי פרטים על המפגש הקרוב
-                    </button>
-                 </form>
-                 
-                 <div class="pt-6 relative z-10">
+    <!-- Registration / Join (photo background) -->
+    <section id="register" class="register-section relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-3xl relative z-10">
+            <div class="card-dna border-none shadow-2xl p-10 md:p-16 text-center space-y-8 bg-white/80 backdrop-blur-md reveal">
+                <div class="space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">רוצים להצטרף?</h2>
+                    <div class="heading-line"></div>
+                    <p class="text-xl text-brand-text-light font-medium">מלאו את טופס ההרשמה ואחזור אליכם בהקדם</p>
+                </div>
+
+                <div>
+                    <a href="https://forms.gle/tbM8x6VyWMhPUZ1D6" target="_blank" rel="noopener" class="btn-primary inline-block px-14 py-5 rounded-full text-2xl font-black tracking-tight">
+                        להרשמה לקורס
+                    </a>
+                </div>
+
+                <p class="text-brand-text-light text-base md:text-lg">
+                    שמירת מקום תתבצע לאחר העברת דמי הרשמה בסך <span class="ltr-text font-bold">350</span> ש"ח.
+                </p>
+
+                <div class="pt-2">
                     <p class="text-brand-text-light text-lg">
-                        או פשוט דברו איתי בוואטסאפ: <br>
-                        <a href="https://wa.me/972546738619" target="_blank" class="text-brand-secondary font-black text-2xl hover:underline ltr-text">054-6738619</a>
+                        או פשוט דברו איתי בוואטסאפ:
+                        <a href="https://wa.me/972546738619" target="_blank" class="text-brand-secondary font-black text-2xl hover:underline ltr-text align-middle">054-6738619</a>
                     </p>
-                 </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Closing note (relocated disclaimer, small, no box) -->
+    <section class="bg-brand-bg-light !pt-14 !pb-4">
+        <div class="container mx-auto px-6 max-w-3xl text-center reveal">
+            <p class="text-brand-text-light text-lg md:text-xl leading-relaxed">
+                הקורס מיועד לזוגות שרוצים לשפר את התקשורת ולהעמיק את החיבור. הקורס לא מתאים לזוגות שנמצאים במשבר ובקונפליקט מתמשך, במצבים כאלה אני ממליצה על ליווי ממוקד בקליניקה. מוזמנים לדבר איתי ונבין יחד מה יתמוך בכם.
+            </p>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="py-20 bg-brand-text text-white/50">
+    <footer class="pt-6 pb-20 bg-brand-bg-light text-brand-text-light">
         <div class="container mx-auto px-6 text-center space-y-12">
-            <div class="space-y-4 flex flex-col items-center">
-                <img src="logo.jpeg" alt="שרון כרמל" class="h-24 md:h-32 object-contain rounded-xl opacity-90 hover:opacity-100 transition-opacity mix-blend-multiply">
-                <p class="text-lg font-handwritten italic text-white/70">"חיבור שמתחיל בלב, ומתבטא במילים"</p>
+            <div class="space-y-3 flex flex-col items-center">
+                <img src="logo-transparent.png" alt="שרון כרמל" class="h-24 md:h-32 object-contain opacity-95 hover:opacity-100 transition-opacity">
+                <p class="text-xl md:text-2xl font-handwritten italic text-brand-text-light">"חיבור שמתחיל בלב, ומתבטא במילים"</p>
             </div>
-            
-            <div class="w-full h-px bg-white/10 max-w-xl mx-auto"></div>
-            
+
+            <div class="w-full h-px bg-brand-text/10 max-w-xl mx-auto"></div>
+
             <div class="space-y-6">
-                <p class="text-sm font-medium tracking-widest uppercase">כל הזכויות שמורות © <span class="ltr-text">2024</span> שרון כרמל</p>
+                <p class="text-sm font-medium tracking-widest uppercase">כל הזכויות שמורות © <span class="ltr-text">2026</span> שרון כרמל</p>
                 <div class="flex justify-center space-x-reverse space-x-10 text-lg font-bold">
                     <a href="https://wa.me/972546738619" class="hover:text-brand-secondary transition-colors">וואטסאפ</a>
                     <a href="#" class="hover:text-brand-secondary transition-colors">פייסבוק</a>
@@ -482,12 +636,28 @@
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // Scroll reveal — text appears in stages as you scroll down
+        const revealEls = document.querySelectorAll('.reveal, .stagger');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+            revealEls.forEach(el => observer.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('is-visible'));
+        }
     </script>
 </body>
 </html>
