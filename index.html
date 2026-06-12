@@ -13,7 +13,7 @@
                 extend: {
                     colors: {
                         'brand-primary': '#8a9a5b',
-                        'brand-secondary': '#d4a373',
+                        'brand-secondary': '#2f9bc7',
                         'brand-bg-light': '#fdfaf5',
                         'brand-bg-accent': '#f4f1ea',
                         'brand-text': '#2d3436',
@@ -30,7 +30,7 @@
         :root {
             /* Refined Reference DNA Palette */
             --brand-primary: #8a9a5b; /* Muted Sage */
-            --brand-secondary: #d4a373; /* Warm Terracotta/Gold */
+            --brand-secondary: #2f9bc7; /* Light sky blue (תכלת) */
             --brand-bg-light: #fdfaf5; /* Warm Ivory */
             --brand-bg-accent: #f4f1ea; /* Soft Beige */
             --brand-text: #2d3436;
@@ -68,12 +68,12 @@
             background: var(--brand-secondary);
             color: white;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 4px 14px 0 rgba(212, 163, 115, 0.39);
+            box-shadow: 0 4px 14px 0 rgba(47, 155, 199, 0.39);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 7px 21px 0 rgba(212, 163, 115, 0.45);
+            box-shadow: 0 7px 21px 0 rgba(47, 155, 199, 0.45);
             filter: brightness(1.05);
         }
 
@@ -175,7 +175,7 @@
         /* Dark Quote Section */
         .section--quote {
             background:
-                linear-gradient(135deg, rgba(44, 74, 76, 0.86) 0%, rgba(61, 90, 92, 0.82) 100%),
+                linear-gradient(135deg, rgba(44, 74, 76, 0.93) 0%, rgba(61, 90, 92, 0.90) 100%),
                 url('99-NZ6_2151.jpg') center 35% / cover no-repeat;
         }
 
@@ -230,9 +230,9 @@
 <body class="overflow-x-hidden">
     <!-- Header/Nav (compact height, matches logo background) -->
     <header class="fixed w-full z-50 backdrop-blur-md border-b border-black/5" style="background-color: var(--logo-bg);">
-        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
+        <nav class="container mx-auto px-6 py-1.5 flex justify-between items-center">
             <a href="#" class="flex items-center">
-                <img src="logo-transparent.png" alt="שרון כרמל - תקשורת מקרבת" class="h-11 md:h-14 w-auto">
+                <img src="logo-nav.png" alt="שרון כרמל - תקשורת מקרבת" class="h-12 md:h-14 w-auto">
             </a>
             <div class="hidden md:flex space-x-reverse space-x-10">
                 <a href="#about" class="nav-link">מי אני</a>
@@ -257,10 +257,10 @@
             <div class="max-w-3xl mx-auto space-y-6">
                 <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] text-brand-text reveal">
                     איך להפוך קונפליקט <br>
-                    <span class="font-handwritten text-6xl md:text-8xl inline-block mt-2" style="color:#c0894e;">לקרבה?</span>
+                    <span class="font-handwritten text-6xl md:text-8xl inline-block mt-2" style="color:#2f9bc7;">לקרבה?</span>
                 </h1>
 
-                <div class="hero-eyebrow text-brand-primary font-bold tracking-[0.3em] text-base md:text-lg uppercase reveal">קורס לזוגות</div>
+                <div class="hero-eyebrow text-5xl md:text-7xl font-extrabold text-brand-text reveal">קורס לזוגות</div>
 
                 <p class="text-xl md:text-2xl text-brand-text font-medium leading-relaxed max-w-xl mx-auto reveal">
                     4 מפגשי ערב, ימי שלישי, יולי 2026
@@ -279,20 +279,28 @@
     <section class="bg-[#f0f2ea] relative overflow-hidden !py-20">
         <div class="container mx-auto px-6 text-center max-w-4xl">
             <div class="space-y-8 reveal">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text leading-tight">מה המאפיין המרכזי של זוגות שנשארים יחד לאורך זמן?</h2>
-                    <div class="heading-line"></div>
+                <div class="space-y-5">
+                    <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
+                        ג'ון וג'וליה גוטמן, מהחוקרים המשפיעים ביותר בתחום הזוגיות בעשורים האחרונים, בדקו:
+                    </p>
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text leading-tight">מה משותף לזוגות שמערכת היחסים שלהם טובה ויציבה ואוהבת גם אחרי 20 שנה?</h2>
+                        <div class="heading-line"></div>
+                    </div>
                 </div>
 
-                <div class="space-y-6">
-                    <p class="text-xl md:text-2xl text-brand-text font-medium leading-relaxed">
-                        מחקר רחב היקף שעשו <span class="ltr-text">XI Y</span>, במטרה לגלות איך הם עושים את זה, גילה שהם יודעים לריב נכון!
+                <div class="space-y-4">
+                    <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
+                        הם גילו שהדבר שהכי משפיע הוא - שהם יודעים איך לריב!
                     </p>
                     <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
-                        כל הזוגות מתווכחים. קונפליקטים הם חלק טבעי מהחיים של כולנו.
+                        כל הזוגות מתווכחים. קרוב ל-70% מהקונפליקטים בזוגיות חוזרים על עצמם.
                     </p>
                     <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
-                        אבל איך לריב נכון? ואיך להתפייס באמת? רובנו לא ראינו זוגיות כזו, ולא לימדו אותנו מה לעשות כשנפגענו.
+                        אבל איך לריב נכון? ואיך להתפייס באמת?
+                    </p>
+                    <p class="text-lg md:text-xl text-brand-text-light font-medium leading-relaxed">
+                        רובנו לא ראינו זוגיות כזו, ולא לימדו אותנו מה לעשות כשנפגענו.
                     </p>
                 </div>
             </div>
@@ -303,9 +311,9 @@
     <section class="section--quote relative overflow-hidden !py-24">
         <div class="container mx-auto px-6 text-center max-w-3xl relative z-10 reveal">
             <p class="text-3xl md:text-5xl font-extrabold text-white leading-relaxed">
-                קונפליקט = שני אנשים שזקוקים להקשבה,
-                <br class="hidden md:block">
-                ואף אחד לא פנוי להקשיב…
+                קונפליקט = שני אנשים שזקוקים להקשבה
+                <br>
+                ואף אחד לא פנוי כדי להקשיב…
             </p>
         </div>
     </section>
@@ -407,7 +415,7 @@
     </div>
 
     <!-- What's Included -->
-    <section class="bg-brand-bg-accent/30 relative">
+    <section class="bg-brand-primary/5 relative">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20 reveal">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-brand-text">מה הקורס כולל?</h2>
@@ -459,25 +467,32 @@
                 <div class="heading-line"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
-                <div class="reveal">
-                    <div class="rounded-[32px] overflow-hidden shadow-2xl">
-                        <img src="facilitation.jpg" alt="שרון כרמל מנחה מפגש זוגות" class="w-full h-full object-cover">
-                    </div>
-                </div>
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="flex items-center gap-4 md:gap-6">
+                    <button type="button" id="testi-prev" aria-label="ציטוט קודם"
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-white shadow-md border border-brand-primary/10 flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
 
-                <div class="space-y-8 stagger">
-                    <div class="card-dna">
-                        <svg class="w-10 h-10 text-brand-secondary/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"></path></svg>
-                        <p class="text-lg text-brand-text leading-relaxed">ההנחיה של שרון היתה מעולה. היא הייתה מאד חדה, ידעה להרגיש את המשתתפים ולחוש מה עומד מאחורי המילים המדוברות. המפגש בקבוצה היה כיף גדול. התרגולים של הכלים בתקשורת מקרבת היו מאד מהנים ומעניינים ועשו חשק לחקור עוד ועוד.</p>
-                        <p class="mt-5 font-extrabold text-brand-primary">איתי</p>
+                    <div class="flex-1 min-h-[1px]">
+                        <div id="testi-track">
+                            <div class="testi-slide card-dna">
+                                <svg class="w-10 h-10 text-brand-secondary/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"></path></svg>
+                                <p class="text-lg text-brand-text leading-relaxed">ההנחיה של שרון היתה מעולה. היא הייתה מאד חדה, ידעה להרגיש את המשתתפים ולחוש מה עומד מאחורי המילים המדוברות. המפגש בקבוצה היה כיף גדול. התרגולים של הכלים בתקשורת מקרבת היו מאד מהנים ומעניינים ועשו חשק לחקור עוד ועוד.</p>
+                                <p class="mt-5 font-extrabold text-brand-primary">איתי</p>
+                            </div>
+                            <div class="testi-slide card-dna" hidden>
+                                <svg class="w-10 h-10 text-brand-secondary/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"></path></svg>
+                                <p class="text-lg text-brand-text leading-relaxed">הקורס השפיע על צורת ההתבוננות שלי על קונפליקטים ועל שיחות קשות. בעיקר יצאתי בתחושה שזו שפה נפלאה, ושהייתי רוצה להפיץ את הבשורה לאנשים סביבי כדי שגם הם יבינו את המקור לשיח שכולנו מורגלים בו ויבינו שאפשר גם אחרת.</p>
+                                <p class="mt-5 font-extrabold text-brand-primary">לימור</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card-dna">
-                        <svg class="w-10 h-10 text-brand-secondary/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"></path></svg>
-                        <p class="text-lg text-brand-text leading-relaxed">הקורס השפיע על צורת ההתבוננות שלי על קונפליקטים ועל שיחות קשות. בעיקר יצאתי בתחושה שזו שפה נפלאה, ושהייתי רוצה להפיץ את הבשורה לאנשים סביבי כדי שגם הם יבינו את המקור לשיח שכולנו מורגלים בו ויבינו שאפשר גם אחרת.</p>
-                        <p class="mt-5 font-extrabold text-brand-primary">לימור</p>
-                    </div>
+                    <button type="button" id="testi-next" aria-label="ציטוט הבא"
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-white shadow-md border border-brand-primary/10 flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5l-7 7 7 7"></path></svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -498,7 +513,6 @@
             </div>
 
             <div class="order-1 md:order-2 space-y-4 reveal">
-                <img src="logo-transparent.png" alt="לוגו שרון כרמל" class="h-16 md:h-20 w-auto opacity-90 mb-2">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-brand-text">נעים להכיר, אני שרון כרמל</h2>
                 <div class="heading-line heading-line--start"></div>
 
@@ -564,7 +578,7 @@
 
                     <div class="mt-10 space-y-8">
                         <a href="#register" class="btn-primary block w-full py-5 rounded-full text-2xl font-black shadow-2xl">
-                            תשריינו לנו מקום
+                            מעניין אותי
                         </a>
                     </div>
                 </div>
@@ -591,13 +605,6 @@
                 <p class="text-brand-text-light text-base md:text-lg">
                     שמירת מקום תתבצע לאחר העברת דמי הרשמה בסך <span class="ltr-text font-bold">350</span> ש"ח.
                 </p>
-
-                <div class="pt-2">
-                    <p class="text-brand-text-light text-lg">
-                        או פשוט דברו איתי בוואטסאפ:
-                        <a href="https://wa.me/972546738619" target="_blank" class="text-brand-secondary font-black text-2xl hover:underline ltr-text align-middle">054-6738619</a>
-                    </p>
-                </div>
             </div>
         </div>
     </section>
@@ -616,7 +623,6 @@
         <div class="container mx-auto px-6 text-center space-y-12">
             <div class="space-y-3 flex flex-col items-center">
                 <img src="logo-transparent.png" alt="שרון כרמל" class="h-24 md:h-32 object-contain opacity-95 hover:opacity-100 transition-opacity">
-                <p class="text-xl md:text-2xl font-handwritten italic text-brand-text-light">"חיבור שמתחיל בלב, ומתבטא במילים"</p>
             </div>
 
             <div class="w-full h-px bg-brand-text/10 max-w-xl mx-auto"></div>
@@ -625,8 +631,8 @@
                 <p class="text-sm font-medium tracking-widest uppercase">כל הזכויות שמורות © <span class="ltr-text">2026</span> שרון כרמל</p>
                 <div class="flex justify-center space-x-reverse space-x-10 text-lg font-bold">
                     <a href="https://wa.me/972546738619" class="hover:text-brand-secondary transition-colors">וואטסאפ</a>
-                    <a href="#" class="hover:text-brand-secondary transition-colors">פייסבוק</a>
-                    <a href="#" class="hover:text-brand-secondary transition-colors">אינסטגרם</a>
+                    <a href="https://www.facebook.com/sharon.carmel.90" target="_blank" rel="noopener" class="hover:text-brand-secondary transition-colors">פייסבוק</a>
+                    <a href="mailto:sharoncarm@gmail.com" class="hover:text-brand-secondary transition-colors">אי-מייל</a>
                 </div>
             </div>
         </div>
@@ -642,6 +648,23 @@
                 target.scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // Testimonials carousel — one quote at a time, arrows to switch
+        (function () {
+            const slides = Array.from(document.querySelectorAll('.testi-slide'));
+            const prev = document.getElementById('testi-prev');
+            const next = document.getElementById('testi-next');
+            if (!slides.length || !prev || !next) return;
+            let current = 0;
+            const show = (i) => {
+                current = (i + slides.length) % slides.length;
+                slides.forEach((slide, idx) => { slide.hidden = idx !== current; });
+            };
+            // In RTL: "next" arrow (points left) advances forward, "prev" (points right) goes back
+            next.addEventListener('click', () => show(current + 1));
+            prev.addEventListener('click', () => show(current - 1));
+            show(0);
+        })();
 
         // Scroll reveal — text appears in stages as you scroll down
         const revealEls = document.querySelectorAll('.reveal, .stagger');
